@@ -1,0 +1,34 @@
+pipeline {
+    agent { label 'jenkins-ec2' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Run Services') {
+            steps {
+                sh 'docker-compose up -d --build'
+            }
+        }
+
+        stage('Test Services') {
+            steps {
+                echo 'Testing Hello Service:'
+                sh 'curl -s http://localhost:8001 || true'
+                
+                echo 'Testing Hi Service:'
+                sh 'curl -s http://localhost:8002 || true'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up...'
+            sh 'docker-compose down'
+        }
+    }
+}
