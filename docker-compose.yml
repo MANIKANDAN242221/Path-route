@@ -1,0 +1,11 @@
+version: '3'
+services:
+  hello-service:
+    build: ./hello
+    ports:
+      - "8001:8001"
+
+  hi-service:
+    build: ./hi
+    ports:
+      - "8002:8002"
