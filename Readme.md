@@ -34,6 +34,7 @@ sudo cp index.html /var/www/html/
 
 sudo nano /etc/nginx/sites-available/default
 
+
 server {
     listen 80;
 
@@ -50,6 +51,7 @@ server {
 }
 
 
+
 sudo nginx -t
 
 sudo systemctl restart nginx
@@ -61,8 +63,12 @@ http://EC2-PUBLIC-IP
 Keep the Backend Running
 
 cd /backend 
-sudo npm install -g pm2
-pm2 start server.js
-pm2 save
-pm2 startup
-pm2 save
+sudo npm install -g pm2 ,
+
+pm2 start server.js ,
+
+pm2 save ,
+
+pm2 startup ,
+
+pm2 save ,
